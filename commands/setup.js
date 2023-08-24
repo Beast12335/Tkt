@@ -48,12 +48,16 @@ module.exports = {
     const buttonRow = new ActionRowBuilder()
       .addComponents(createButton, editButton, deleteButton, sendButton, urlButton);
 
-    let embedDescription = 'Create a panel to get started';
-
+    let embedDescription;
     if (rows.length > 0) {
       editButton.setDisabled(false);
       deleteButton.setDisabled(false);
       sendButton.setDisabled(false);
+      for(let i=0;i<rows.length;i++){
+        embedDescription = embedDescription + `${i+1} ${rows[0].panel_name} - <#${rows[0].channel}> \n`
+          }
+    }else{
+      embedDescription = 'Create a panel to get started';
     }
 
     const embed = new EmbedBuilder()
