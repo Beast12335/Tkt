@@ -7,6 +7,7 @@ const {
 const mysql = require('mysql2/promise');
 
 module.exports = {
+  name:'interactionCreate',
   async execute(interaction) {
     if (!interaction.isButton()) return;
     if (interaction.customId !== 'create') return;
