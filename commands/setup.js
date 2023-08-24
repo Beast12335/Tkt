@@ -28,19 +28,19 @@ module.exports = {
       .setStyle('Primary')
       .setDisabled(true);
 
-    const deleteButton = new MessageButton()
+    const deleteButton = new ButtonBuilder()
       .setCustomId('delete')
       .setLabel('Delete Panel')
       .setStyle('Danger')
       .setDisabled(true);
 
-    const sendButton = new MessageButton()
+    const sendButton = new ButtonBuilder()
       .setCustomId('send')
       .setLabel('Send Panel')
       .setStyle('Secondary')
       .setDisabled(true);
 
-    const urlButton = new MessageButton()
+    const urlButton = new ButtonBuilder()
       .setLabel('↗️')
       .setStyle('Link')
       .setURL('https://discord.gg/mulancup');
