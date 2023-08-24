@@ -35,7 +35,7 @@ module.exports = {
       const embed = interaction.message.embeds[0];
       const panelMessageButton = new ButtonBuilder()
         .setCustomId('create_1')
-        .setLabel(''🅰')
+        .setLabel('🅰')
         .setStyle('Secondary');
 
       const ticketChannelButton = new ButtonBuilder()
