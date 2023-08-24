@@ -2,7 +2,7 @@
   "name": "tkt",
   "version": "1.0.0",
   "description": "A noob with advanced functionality using code ",
-  "main": "indext.js",
+  "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
