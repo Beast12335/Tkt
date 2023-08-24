@@ -11,7 +11,6 @@ module.exports = {
   async execute(interaction) {
     if (!interaction.isButton()) return;
     if (interaction.customId !== 'create') return;
-    console.log('yahan tak')
     await interaction.deferUpdate();
     try {
       if (
@@ -28,43 +27,45 @@ module.exports = {
         });
       }
 
-      console.log('rope checking')
       const connection = await mysql.createConnection(process.env.DB_URL);
       const [rows] = await connection.execute(
         'SELECT * FROM ticket_setup WHERE server = ?',
         [interaction.guild.id]
       );
-      console.log('table data')
       const embed = interaction.message.embeds[0];
       const panelMessageButton = new ButtonBuilder()
         .setCustomId('create_1')
-        .setLabel('🅰️')
-        .setStyle('Primary');
+        .setLabel(''🅰')
+        .setStyle('Secondary');
 
       const ticketChannelButton = new ButtonBuilder()
         .setCustomId('create_2')
-        .setLabel('🅱️')
-        .setStyle('Primary');
+        .setLabel('🅱')
+        .setStyle('Secondary');
 
       const ticketOpeningCategoryButton = new ButtonBuilder()
         .setCustomId('create_3')
-        .setLabel('🙅‍♂️')
-        .setStyle('Primary');
+        .setLabel('🅲')
+        .setStyle('Secondary');
 
       const ticketOpeningMessageButton = new ButtonBuilder()
         .setCustomId('create_4')
-        .setLabel('4️⃣')
-        .setStyle('Primary');
+        .setLabel('🅳')
+        .setStyle('Secondary');
 
       const autoSaveTranscriptButton = new ButtonBuilder()
         .setCustomId('create_5')
-        .setLabel('5️⃣')
-        .setStyle('Primary');
+        .setLabel('🅴')
+        .setStyle('Secondary');
 
       const ticketTranscriptChannelButton = new ButtonBuilder()
         .setCustomId('create_6')
-        .setLabel('4️⃣')
-        .setStyle('Primary');
+        .setLabel('🅵')
+        .setStyle('Secondary');
+      const staffRoleButton = new ButtonBuilder()
+      .setCustomId('create_7')
+      .setLabel'('🅶') 
+      .setStyle('Secondary');
 
       const buttonRow = new ActionRowBuilder().addComponents(
         panelMessageButton,
@@ -74,11 +75,11 @@ module.exports = {
         autoSaveTranscriptButton
       );
       const button2 = new ActionRowBuilder().addComponents(
-        ticketTranscriptChannelButton
+        ticketTranscriptChannelButton,staffRoleButton
       );
 
       const emb = EmbedBuilder.from(embed).setDescription(
-        `I. Panel Message\nII. Ticket Channel\nIII. Ticket Opening Category\nIV. Ticket Opening Message\nV. Auto Save Transcript\nVI. Ticket Transcript Channel`
+        'I. Ticket Channel \n `None` \n II. Ticket Category \n `None` \n III. Panel Message \n `Not set` \n IV. Ticket Opening Message\n `Not set` \n V. Staff Roles \n `Not set` \n VI. Auto Transcript \n `False` \n VII. Ticket Logs channel \n `Not set`'
       );
 
       await interaction.editReply({
@@ -87,6 +88,7 @@ module.exports = {
       });
     } catch (e) {
       console.log('Error handling create panel:', e);
+      await interaction.followUp({content:`Error: ${e}`});
     }
   },
 };
