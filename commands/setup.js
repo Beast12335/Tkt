@@ -51,14 +51,13 @@ module.exports = {
     let embedDescription = 'Create a panel to get started';
 
     if (rows.length > 0) {
-      embedDescription = `Server ID: ${rows[0].server_id}`;
       editButton.setDisabled(false);
       deleteButton.setDisabled(false);
       sendButton.setDisabled(false);
     }
 
     const embed = new EmbedBuilder()
-      .setTitle('Setup Options')
+      .setTitle('Ticket Bot Advanced Setup')
       .setDescription(embedDescription)
       .setColor(Random) // Yellowish color
       .setThumbnail(interaction.guild.iconURL())
