@@ -64,7 +64,7 @@ module.exports = {
         .setStyle('Secondary');
       const staffRoleButton = new ButtonBuilder()
       .setCustomId('create_7')
-      .setLabel'('🅶') 
+      .setLabel('🅶') 
       .setStyle('Secondary');
 
       const buttonRow = new ActionRowBuilder().addComponents(
