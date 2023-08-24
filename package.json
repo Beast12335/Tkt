@@ -1,0 +1,20 @@
+{
+  "name": "tkt",
+  "version": "1.0.0",
+  "description": "A noob with advanced functionality using code ",
+  "main": "indext.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord-api-types": "0.37.51",
+    "discord.js": "14.2.0",
+    "dotenv": "16.3.1",
+    "mysql2": "3.5.2",
+    "canvas": "2.11.2",
+    "axios": "1.4.0",
+    "discord-html-transcripts":"3.1.5",
+    "qrcode":"1.5.3",
+    "node-cron":"3.0.2"
+  }
+}
