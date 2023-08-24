@@ -35,8 +35,9 @@ module.exports = {
       const embed = interaction.message.embeds[0];
       const panelMessageButton = new ButtonBuilder()
         .setCustomId('create_1')
-        .setLabel('🅰')
+        .setLabel(' ')
         .setStyle('Secondary');
+        .setEmoji('regional_indicator_a') 
 
       const ticketChannelButton = new ButtonBuilder()
         .setCustomId('create_2')
@@ -79,7 +80,7 @@ module.exports = {
       );
 
       const emb = EmbedBuilder.from(embed).setDescription(
-        'I. Ticket Channel \n `None` \n II. Ticket Category \n `None` \n III. Panel Message \n `Not set` \n IV. Ticket Opening Message\n `Not set` \n V. Staff Roles \n `Not set` \n VI. Auto Transcript \n `False` \n VII. Ticket Logs channel \n `Not set`'
+        ':regional_indicator_a:. Ticket Channel: \n `None` \n :regional_indicator_b:. Ticket Category; \n `None` \n :regional_indicator_c:. Panel Message: \n `Not set` \n :regional_indicator_d:. Ticket Opening Message: \n `Not set` \n :regional_indicator_e:. Staff Roles: \n `Not set` \n :regional_indicator_f:. Auto Transcript: \n `False` \n :regional_indicator_g:. Ticket Logs channel: \n `Not set`'
       );
 
       await interaction.editReply({
