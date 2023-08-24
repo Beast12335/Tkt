@@ -63,7 +63,7 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setTitle('Ticket Bot Advanced Setup')
       .setDescription(embedDescription)
-      .setColor(Random) // Yellowish color
+      .setColor('Random') // Yellowish color
       .setThumbnail(interaction.guild.iconURL())
       .setFooter({
         text: interaction.guild.name,
