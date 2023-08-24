@@ -12,7 +12,7 @@ module.exports = {
     if (!interaction.isButton()) return;
     if (interaction.customId !== 'create') return;
     console.log('yahan tak')
-    await interaction.deferReply();
+    await interaction.deferUpdate();
     try {
       if (
         !interaction.member.permissions.has(
