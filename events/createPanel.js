@@ -83,7 +83,7 @@ module.exports = {
         components: [buttonRow, button2],
       });
     } catch (e) {
-      console.log('Error handling create panel:', error);
+      console.log('Error handling create panel:', e);
     }
   },
 };
