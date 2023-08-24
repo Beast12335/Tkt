@@ -61,7 +61,7 @@ module.exports = {
     }
 
     const embed = new EmbedBuilder()
-      .setTitle('Ticket Bot Advanced Setup')
+      .setTitle('[Ticket Bot Advanced Setup] (https://discord.gg/mulancup)')
       .setDescription(embedDescription)
       .setColor('Random') // Yellowish color
       .setThumbnail(interaction.guild.iconURL())
