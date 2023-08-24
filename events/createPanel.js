@@ -12,7 +12,7 @@ module.exports = {
     if (!interaction.isButton()) return;
     if (interaction.customId !== 'create') return;
     console.log('yahan tak')
-    await interaction.deferReply();
+    await interaction.deferReply({ephemeral:true});
     try {
       if (
         !interaction.member.permissions.has(
@@ -77,12 +77,12 @@ module.exports = {
         ticketTranscriptChannelButton
       );
 
-      embed.setDescription(
+      const emb = EmbedBuilder.from(embed).setDescription(
         `I. Panel Message\nII. Ticket Channel\nIII. Ticket Opening Category\nIV. Ticket Opening Message\nV. Auto Save Transcript\nVI. Ticket Transcript Channel`
       );
 
       await interaction.editReply({
-        embeds: [embed],
+        embeds: [emb],
         components: [buttonRow, button2],
       });
     } catch (e) {
