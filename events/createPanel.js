@@ -10,7 +10,8 @@ module.exports = {
   async execute(interaction) {
     if (!interaction.isButton()) return;
     if (interaction.customId !== 'create') return;
-    await interaction.deferReply({ephemeral: true});
+    console.log('yahan tak')
+    await interaction.deferReply();
     try {
       if (
         !interaction.member.permissions.has(
@@ -26,12 +27,13 @@ module.exports = {
         });
       }
 
+      console.log('rope checking')
       const connection = await mysql.createConnection(process.env.DB_URL);
       const [rows] = await connection.execute(
         'SELECT * FROM ticket_setup WHERE server = ?',
         [interaction.guild.id]
       );
-
+      console.log('table data')
       const embed = interaction.message.embeds[0];
       const panelMessageButton = new ButtonBuilder()
         .setCustomId('create_1')
