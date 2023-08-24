@@ -3,8 +3,8 @@ const mysql = require('mysql2/promise');
 
 module.exports = {
   async execute(interaction) {
-    if (!interaction.isButton) return;
-    if (!interaction.customId == 'create') return;
+    if (!interaction.isButton()) return;
+    if (interaction.customId !== 'create') return;
     await interaction.deferReply({ephemeral:true});
     if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageServer) || !interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
       return interaction.followUp({ content: 'You don\'t have permission to interact with this button.', ephemeral: true });
