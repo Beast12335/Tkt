@@ -11,7 +11,7 @@ module.exports = {
     }
 
     const connection = await mysql.createConnection(process.env.DB_URL);
-    const [rows] = await connection.execute('SELECT * FROM ticket_setup WHERE server_id = ?', [interaction.guild.id]);
+    const [rows] = await connection.execute('SELECT * FROM ticket_setup WHERE server = ?', [interaction.guild.id]);
 
     const embed = interaction.message.embeds[0];
     const panelMessageButton = new ButtonBuilder()
