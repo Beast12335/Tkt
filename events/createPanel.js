@@ -36,8 +36,8 @@ module.exports = {
       const panelMessageButton = new ButtonBuilder()
         .setCustomId('create_1')
         .setLabel(' ')
-        .setStyle('Secondary');
-        .setEmoji('regional_indicator_a') 
+        .setStyle('Secondary')
+        .setEmoji('regional_indicator_a');
 
       const ticketChannelButton = new ButtonBuilder()
         .setCustomId('create_2')
