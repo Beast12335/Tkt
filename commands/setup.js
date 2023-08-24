@@ -8,7 +8,7 @@ module.exports = {
     .setDescription('Set up the tickets')
     .setDefaultPermission(false), // Disable by default
   async execute(interaction) {
-    await interaction.deferReply({ephemeral:true})
+    await interaction.deferReply()
     const userPermissions = interaction.member.permissions;
     if (!userPermissions.has(PermissionsBitField.Flags.ADMINISTRATOR) || !userPermissions.has(PermissionsBitField.Flags.ManageServer)) {
       return interaction.followUp({ content: 'You don\'t have permission to use this command.', ephemeral: true });
