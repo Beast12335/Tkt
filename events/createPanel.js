@@ -41,7 +41,7 @@ module.exports = {
 
     const ticketTranscriptChannelButton = new ButtonBuilder()
       .setCustomId('create_6')
-      .setLabel('4️⃣)
+      .setLabel('4️⃣')
       .setStyle('Primary');
 
     const buttonRow = new ActionRowBuilder()
