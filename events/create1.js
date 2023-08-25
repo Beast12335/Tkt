@@ -39,7 +39,7 @@ module.exports = {
         ephemeral: false,
       });
 
-      const collector = createMessageCollector(interaction.channel, {
+      const collector = interaction.channel.createMessageCollector(interaction.channel, {
         filter: (msg) => msg.author.id === interaction.user.id,
         time: 30000, // 30 seconds
       });
