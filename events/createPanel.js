@@ -67,12 +67,12 @@ module.exports = {
         .setCustomId('create_6')
         .setLabel(' ')
         .setStyle('Secondary')
-        .setEmoji('');
+        .setEmoji('🇫');
       const staffRoleButton = new ButtonBuilder()
       .setCustomId('create_7')
       .setLabel(' ') 
       .setStyle('Secondary')
-      .setEmoji('');
+      .setEmoji('🇬');
 
       const backButton = new ButtonBuilder()
       .setCustomId('create_8')
