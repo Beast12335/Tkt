@@ -2,12 +2,12 @@ const {
   PermissionsBitField,
   ActionRowBuilder,
   ButtonBuilder,
-  EmbedBuilder,
+  EmbedBuilder,MessageCollector
 } = require('discord.js');
 const mysql = require('mysql2/promise');
 
 module.exports = {
-  name:'interactionCreate',
+  name: 'interactionCreate',
   async execute(interaction) {
     if (!interaction.isButton()) return;
     if (interaction.customId !== 'create_1') return;
@@ -33,6 +33,31 @@ module.exports = {
         [interaction.guild.id]
       );
       const embed = interaction.message.embeds[0];
+
+      await interaction.followUp({
+        content: 'Please enter the ticket channel:',
+        ephemeral: false,
+      });
+
+      const collector = createMessageCollector(interaction.channel, {
+        filter: (msg) => msg.author.id === interaction.user.id,
+        time: 30000, // 30 seconds
+      });
+
+      collector.on('collect', async (msg) => {
+        collector.stop();
+
+        const newPanelMessage = msg.content;
+// Delete the original user input message and the bot's response
+        await interaction.deleteReply();
+        await msg.delete();
+      });
+
+      collector.on('end', (collected) => {
+        if (collected.size === 0) {
+          await interaction.deleteReply();
+        }
+      });
       const panelMessageButton = new ButtonBuilder()
         .setCustomId('create_1')
         .setLabel(' ')
@@ -69,21 +94,21 @@ module.exports = {
         .setStyle('Secondary')
         .setEmoji('🇫');
       const staffRoleButton = new ButtonBuilder()
-      .setCustomId('create_7')
-      .setLabel(' ') 
-      .setStyle('Secondary')
-      .setEmoji('🇬');
+        .setCustomId('create_7')
+        .setLabel(' ')
+        .setStyle('Secondary')
+        .setEmoji('🇬');
 
       const backButton = new ButtonBuilder()
-      .setCustomId('create_8')
-      .setLabel('Go Back') 
-      .setStyle('Danger');
-      
+        .setCustomId('create_8')
+        .setLabel('Go Back')
+        .setStyle('Danger');
+
       const saveButton = new ButtonBuilder()
-      .setCustomId('create_9')
-      .setLabel('Save') 
-      .setStyle('Success')
-      .setDisabled(true);
+        .setCustomId('create_9')
+        .setLabel('Save')
+        .setStyle('Success')
+        .setDisabled(true);
 
       const buttonRow = new ActionRowBuilder().addComponents(
         panelMessageButton,
@@ -93,11 +118,14 @@ module.exports = {
         autoSaveTranscriptButton
       );
       const button2 = new ActionRowBuilder().addComponents(
-        ticketTranscriptChannelButton,staffRoleButton,backButton,saveButton
+        ticketTranscriptChannelButton,
+        staffRoleButton,
+        backButton,
+        saveButton
       );
 
       const emb = EmbedBuilder.from(embed).setDescription(
-        ':regional_indicator_a: **Ticket Channel:** \n `None` \n :regional_indicator_b: **Ticket Category:** \n `None` \n :regional_indicator_c: **Panel Message:** \n `Not set` \n :regional_indicator_d: **Ticket Opening Message:** \n `Not set` \n :regional_indicator_e: **Staff Roles:** \n `Not set` \n :regional_indicator_f: **Auto Transcript:** \n `False` \n :regional_indicator_g: **Ticket Logs channel:** \n `Not set`'
+        ':regional_indicator_a: **Ticket Channel:** \n'+newPanelMessage+' \n :regional_indicator_b: **Ticket Category:** \n `None` \n :regional_indicator_c: **Panel Message:** \n `Not set` \n :regional_indicator_d: **Ticket Opening Message:** \n `Not set` \n :regional_indicator_e: **Staff Roles:** \n `Not set` \n :regional_indicator_f: **Auto Transcript:** \n `False` \n :regional_indicator_g: **Ticket Logs channel:** \n `Not set`'
       );
 
       await interaction.editReply({
@@ -106,7 +134,7 @@ module.exports = {
       });
     } catch (e) {
       console.log('Error handling create panel question 1:', e);
-      await interaction.followUp({content:`Error: ${e}`});
+      await interaction.followUp({content: `Error: ${e}`});
     }
   },
 };
