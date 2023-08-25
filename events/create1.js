@@ -53,7 +53,7 @@ module.exports = {
         await msg.delete();
       });
 
-      collector.on('end', (collected) => {
+      collector.on('end', async (collected) => {
         if (collected.size === 0) {
           await interaction.deleteReply();
         }
