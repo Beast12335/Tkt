@@ -37,7 +37,7 @@ module.exports = {
         .setCustomId('create_1')
         .setLabel(' ')
         .setStyle('Secondary')
-        .setEmoji('\:regional_indicator_a:');
+        .setEmoji('🇬');
 
       const ticketChannelButton = new ButtonBuilder()
         .setCustomId('create_2')
