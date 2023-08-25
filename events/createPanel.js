@@ -47,27 +47,43 @@ module.exports = {
 
       const ticketOpeningCategoryButton = new ButtonBuilder()
         .setCustomId('create_3')
-        .setLabel('🅲')
-        .setStyle('Secondary');
+        .setLabel(' ')
+        .setStyle('Secondary')
+        .setEmoji('🇨');
 
       const ticketOpeningMessageButton = new ButtonBuilder()
         .setCustomId('create_4')
-        .setLabel('🅳')
-        .setStyle('Secondary');
+        .setLabel(' ')
+        .setStyle('Secondary')
+        .setEmoji('🇩');
 
       const autoSaveTranscriptButton = new ButtonBuilder()
         .setCustomId('create_5')
-        .setLabel('🅴')
-        .setStyle('Secondary');
+        .setLabel(' ')
+        .setStyle('Secondary')
+        .setEmoji('🇪');
 
       const ticketTranscriptChannelButton = new ButtonBuilder()
         .setCustomId('create_6')
-        .setLabel('🅵')
-        .setStyle('Secondary');
+        .setLabel(' ')
+        .setStyle('Secondary')
+        .setEmoji('');
       const staffRoleButton = new ButtonBuilder()
       .setCustomId('create_7')
-      .setLabel('🅶') 
-      .setStyle('Secondary');
+      .setLabel(' ') 
+      .setStyle('Secondary')
+      .setEmoji('');
+
+      const backButton = new ButtonBuilder()
+      .setCustomId('create_8')
+      .setLabel('Go Back') 
+      .setStyle('Danger');
+      
+      const saveButton = new ButtonBuilder()
+      .setCustomId('create_9')
+      .setLabel('Save') 
+      .setStyle('Success')
+      .setDisabled(true);
 
       const buttonRow = new ActionRowBuilder().addComponents(
         panelMessageButton,
@@ -77,11 +93,11 @@ module.exports = {
         autoSaveTranscriptButton
       );
       const button2 = new ActionRowBuilder().addComponents(
-        ticketTranscriptChannelButton,staffRoleButton
+        ticketTranscriptChannelButton,staffRoleButton,backButton,saveButton
       );
 
       const emb = EmbedBuilder.from(embed).setDescription(
-        ':regional_indicator_a:. Ticket Channel: \n `None` \n :regional_indicator_b:. Ticket Category; \n `None` \n :regional_indicator_c:. Panel Message: \n `Not set` \n :regional_indicator_d:. Ticket Opening Message: \n `Not set` \n :regional_indicator_e:. Staff Roles: \n `Not set` \n :regional_indicator_f:. Auto Transcript: \n `False` \n :regional_indicator_g:. Ticket Logs channel: \n `Not set`'
+        ':regional_indicator_a: **Ticket Channel:** \n `None` \n :regional_indicator_b: **Ticket Category:** \n `None` \n :regional_indicator_c: **Panel Message:** \n `Not set` \n :regional_indicator_d: **Ticket Opening Message:** \n `Not set` \n :regional_indicator_e: **Staff Roles:** \n `Not set` \n :regional_indicator_f: **Auto Transcript:** \n `False` \n :regional_indicator_g: **Ticket Logs channel:** \n `Not set`'
       );
 
       await interaction.editReply({
