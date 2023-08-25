@@ -37,12 +37,13 @@ module.exports = {
         .setCustomId('create_1')
         .setLabel(' ')
         .setStyle('Secondary')
-        .setEmoji('🇬');
+        .setEmoji('🇦');
 
       const ticketChannelButton = new ButtonBuilder()
         .setCustomId('create_2')
-        .setLabel('🅱')
-        .setStyle('Secondary');
+        .setLabel(' ')
+        .setStyle('Secondary')
+        .setEmoji('🇧');
 
       const ticketOpeningCategoryButton = new ButtonBuilder()
         .setCustomId('create_3')
