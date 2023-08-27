@@ -104,6 +104,7 @@ module.exports = {
         embeds: [emb],
         components: [buttonRow, button2],
       });
+      console.log(interaction.message.embeds[0])
     } catch (e) {
       console.log('Error handling create panel:', e);
       await interaction.followUp({content:`Error: ${e}`});
