@@ -10,7 +10,7 @@ module.exports = {
   name:'interactionCreate',
   async execute(interaction) {
     if (!interaction.isButton()) return;
-    if (interaction.customId !== 'confirm') return;
+    if (interaction.customId !== 'cancel_bot') return;
     await interaction.deferUpdate();
     try {
       if (
@@ -30,8 +30,9 @@ module.exports = {
       const embed = interaction.message.embeds[0];
       const channel = embed.fields[0].value
       const c = interaction.client.channels.cache.get(channel)
+      const emb = EmbedBuilder.from(embed).addFields({name:`Demo`,value:`Test`});
       await c.send({content:`<@${embed.fields[1].value}> Bot creation was cancelled`});
-      
+      await interaction.message.edit({embeds:[emb]})
       console.log(embed)
     } catch (e) {
       console.log('Error handling create panel:', e);
